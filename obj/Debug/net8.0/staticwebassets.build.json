@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "M81wZ4xS89mHy2YxYZWvF5CXa1pQSyqNMwqNU4c6nQE=",
+  "Source": "AgroSolutions-IngestionService",
+  "BasePath": "_content/AgroSolutions-IngestionService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
