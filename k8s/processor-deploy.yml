@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: processor
+  template:
+    metadata:
+      labels:
+        app: processor
+    spec:
+      containers:
+      - name: processor-worker
+        image: viniciusdelr/agrosolutions-processor:v1 # Altere para sua tag
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: agro-db-secret # Usando a mesma secret que você já criou
+              key: connection-string
+        - name: RabbitMQ__Host
+          value: "rabbitmq-service"
