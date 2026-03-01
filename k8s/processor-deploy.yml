@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: processor-worker
-        image: vviniciusdelr/agrosolutions-ingestionservice:v1 # Altere para sua tag
+        image: vviniciusdelr/agrosolutions-processor:v1 # Altere para sua tag
         env:
         - name: ConnectionStrings__DefaultConnection
           valueFrom:
