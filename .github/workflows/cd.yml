@@ -1,4 +1,4 @@
-name: CD - Build
+name: CD - Build e Deploy Multisserviço
 
 on:
   workflow_dispatch:
@@ -19,13 +19,21 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build e push da imagem Docker
+      - name: Build e push Ingestion
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./deploy/ingestion/Dockerfile # Caminho para a pasta que criamos
           push: true
           tags: viniciusdelr/agrosolutions-ingestionservice:v1
+
+      - name: Build e push Processor
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./deploy/processor/Dockerfile # Caminho para a pasta que criamos
+          push: true
+          tags: viniciusdelr/agrosolutions-processor:v1
 
       - name: Azure Login
         uses: azure/login@v1
@@ -47,3 +55,4 @@ jobs:
             k8s/processor-deploy.yml
           images: |
             viniciusdelr/agrosolutions-ingestionservice:v1
+            viniciusdelr/agrosolutions-processor:v1
