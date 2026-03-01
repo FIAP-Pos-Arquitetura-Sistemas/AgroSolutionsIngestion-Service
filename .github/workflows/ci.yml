@@ -25,5 +25,8 @@ jobs:
       - name: Build do Projeto
         run: dotnet build AgroSolutions-IngestionService.sln --no-restore -c Release
 
-      - name: Validar Dockerfile
-        run: docker build -t ci-test-image .
+      - name: Validar Dockerfile da Ingestão
+        run: docker build -t ci-test-ingestion -f ./deploy/ingestion/Dockerfile .
+
+      - name: Validar Dockerfile do Processador
+        run: docker build -t ci-test-processor -f ./deploy/processor/Dockerfile .
