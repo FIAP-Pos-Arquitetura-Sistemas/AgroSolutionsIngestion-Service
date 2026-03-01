@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgroSolutions-IngestionService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6ce1079d81752cbec4d370abe214f9307c2c67b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3385e4ab88f96fc878f081cab9ee5cb82eb9cfb")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgroSolutions-IngestionService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgroSolutions-IngestionService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

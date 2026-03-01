@@ -1,0 +1,27 @@
+services:
+  ingestion-service:
+    container_name: agrosolutions-ingestion
+    build:
+      context: .
+      dockerfile: deploy/ingestion/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  processor-service:
+    container_name: agrosolutions-processor
+    build:
+      context: .
+      dockerfile: deploy/processor/Dockerfile
+    depends_on:
+      - rabbitmq # Garante que o RabbitMQ suba antes do Worker
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: agrosolutions-mq
+    ports:
+      - "5672:5672"
+      - "15672:15672" # Painel de controle do RabbitMQ
