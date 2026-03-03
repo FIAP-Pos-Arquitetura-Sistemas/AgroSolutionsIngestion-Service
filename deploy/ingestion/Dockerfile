@@ -1,10 +1,13 @@
 # Estágio de Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-# Sobe dois níveis para achar o projeto
-COPY ["../../AgroSolutions-IngestionService.csproj", "./"]
+
+# Copia da raiz do repositório direto para o /src do container
+COPY ["AgroSolutions-IngestionService.csproj", "./"]
 RUN dotnet restore "AgroSolutions-IngestionService.csproj"
-COPY "../../" . 
+
+# Copia o resto do código
+COPY . . 
 RUN dotnet publish "AgroSolutions-IngestionService.csproj" -c Release -o /app/publish
 
 # Estágio de Runtime
